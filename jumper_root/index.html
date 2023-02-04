@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jumper root</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=VT323"
+    />
+  </head>
+  <body>
+    <div class="bg" style="display: block">
+      <div id="start">press space!</div>
+    </div>
+    <div class="game" id="game">
+      <div id="PB">highest score: 0</div>
+      <div id="score">Score: 0</div>
+      <div id="cloud"></div>
+      <div id="root"></div>
+      <div id="number">(number)</div>
+      <div id="floor"></div>
+      <div id="options">
+        <!-- unfocus button after click -->
+
+        <button
+          id="option1"
+          class="option"
+          onclick="checkNum(option1); this.blur()"
+        >
+          option1
+        </button>
+        <button
+          id="option2"
+          class="option"
+          onclick="checkNum(option2); this.blur()"
+        >
+          option2
+        </button>
+        <button
+          id="option3"
+          class="option"
+          onclick="checkNum(option3); this.blur()"
+        >
+          option3
+        </button>
+      </div>
+    </div>
+    <div class="bg" style="display: none">
+      <div id="over">GameOver!</div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>

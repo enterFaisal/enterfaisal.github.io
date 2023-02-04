@@ -1,0 +1,205 @@
+.game {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid black; */
+  margin: auto;
+
+  background: linear-gradient(to top, rgb(36, 6, 0) 0%, rgb(62, 16, 0) 38%, rgb(22, 192, 244) 38%, rgb(18, 127, 255) 100%); 
+
+
+}
+
+
+
+#options{
+  position: absolute;
+  top: 78%;
+  
+  /*  in the middle */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+
+
+}
+
+.option{  
+font-family: "VT323", monospace;
+  width: 150px;
+  height: 50px;
+  background-size: 50px 50px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin: 0px 10px;
+  animation: option 0.5s infinite linear;
+  border-radius: 10px;
+  font-size: 30px;
+}
+
+#root {
+  width: 188px ;
+  height: 120px;
+  background-image: url(img/0P.png);
+  background-size: 188px 120px;
+  position: absolute;
+  top: 46%;
+
+  /*  always visible */
+  z-index: 1;
+  animation: none;
+
+
+}
+
+
+
+#score{
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  /*in the middle */
+  text-align: center;
+}
+
+#cloud{
+  width: 100%;
+  height: 22%;
+  background-image: url(img/cloud2.png);
+  background-size: 70% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 14%;
+  animation: none;
+
+  
+}
+
+
+#number {
+  font-size: 45px;
+  position: absolute;
+  
+  width: 20px;
+  height: 20px;
+  top: 53%;
+
+  animation: none;
+}
+
+#floor {
+  width: 100%;
+  height: 50px;
+  background-image: url(img/floor.png);
+  background-size: 20% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 58%;
+  animation: none;
+}
+
+
+
+  #over {
+    display: none;
+    font-family: "VT323", monospace;
+    font-size: 15rem;
+    text-align: center;
+    top: 20%;
+    position: relative;
+}
+
+#start{
+    font-family: "VT323", monospace;
+    font-size: 15rem;
+    text-align: center;
+    /* transform:translateY(8rem); */
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 20%;
+}
+
+.bg {
+  background-color: rgba(71, 41, 41, 0.5);
+  position: absolute;
+  z-index: 1;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#PB{
+    display: block;
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+@keyframes root {
+  0% {
+    background-image: url(img/1P.png);
+  }
+
+  25% {
+    background-image: url(img/2P.png);
+  }
+
+  50% {
+    background-image: url(img/3P.png);
+  }
+
+  75% {
+    background-image: url(img/4P.png);
+  }
+
+  100% {
+    background-image: url(img/1P.png);
+  }
+}
+
+
+@keyframes infinitefloors {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -200%;
+  }
+}
+
+@keyframes block {
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: -20%;
+  }
+
+
+}
+
+body{
+font-family: "VT323", monospace;
+
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+
+}
+
