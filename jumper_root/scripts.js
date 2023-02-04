@@ -1,6 +1,7 @@
 const root = document.getElementById("root");
 const number = document.getElementById("number");
 const theScore = document.getElementById("score");
+const PB = document.getElementById("PB")
 
 const button1 = document.getElementById("option1");
 const button2 = document.getElementById("option2");
@@ -69,21 +70,52 @@ function checkNum(buttonpressed) {
     number.offsetHeight;
     number.style.animation = null;
   } else {
-    alert("Game Over");
-    location.reload();
+      gameover();
   }
 }
+function gameover() {
+    over.style.display = "block";
+    floor.style.animation = "none";
+    number.style.animation = "none";
+    button1.style.pointerEvents = "none";
+    button2.style.pointerEvents = "none";
+    button3.style.pointerEvents = "none";
+    highest();
+}
+function startgame() {
+    over.style.display = "none";
+    start.style.display = "none";
+    floor.style.animation = "infinitefloors 10s infinite linear";
+    number.style.animation = "block 10s infinite linear";
+    button1.style.pointerEvents = "auto";
+    button2.style.pointerEvents = "auto";
+    button3.style.pointerEvents = "auto";
+}
+function highest() {
+    PB.style.display = "block";
+    scoreNow = theScore.innerHTML;
+    PB.innerHTML = "highest " + scoreNow;
+    theScore.innerHTML = "Score: " + "0";
 
+}
 let isAlive = setInterval(function () {
   // get current X position
   let numberpos = parseInt(
-    window.getComputedStyle(number).getPropertyValue("left")
+      window.getComputedStyle(number).getPropertyValue("left")
   );
 
   // detect collision
   if (numberpos < 30 && numberpos > 0) {
     // collision
-    alert("Game Over!");
-    location.reload();
-  }
+      gameover();
+    }
 }, 10);
+
+document.body.onkeyup = function (e) {
+    if (e.key == " " ||
+        e.code == "Space" ||
+        e.keyCode == 32
+    ) {
+        startgame()
+    }
+}

@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  pointer-events: none;
 
 
 }
@@ -50,17 +50,11 @@ font-family: "VT323", monospace;
   /*  always visible */
   z-index: 1;
 }
-#score{
-  font-size: 20px;
-  /*in the middle */
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  
+#score {
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    /*in the middle */
+    text-align: center;
 }
 
 
@@ -72,7 +66,7 @@ font-family: "VT323", monospace;
   height: 20px;
   top: 45%;
 
-  animation: block 10s infinite linear;
+  animation: none;
 }
 
 #floor {
@@ -86,7 +80,7 @@ font-family: "VT323", monospace;
   position: absolute;
   top: 50%;
   /* top: 50%; */
-  animation: infinitefloors 10s infinite linear;
+  animation: none;
 }
 
 @keyframes infinitefloors {
@@ -121,4 +115,22 @@ bottom: 0;
 right: 0;
 
 }
-
+#over {
+    display: none;
+    font-family: "VT323", monospace;
+    font-size: 15rem;
+    text-align: center;
+    transform:translateY(8rem)
+}
+#start{
+    font-family: "VT323", monospace;
+    font-size: 15rem;
+    text-align: center;
+    transform:translateY(8rem)
+}
+#PB{
+    display: none;
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    text-align: center;
+}
