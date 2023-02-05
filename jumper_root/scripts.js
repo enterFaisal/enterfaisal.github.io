@@ -86,7 +86,7 @@ function checkNum(buttonpressed) {
 
     // reset the number position keyframes
     number.style.animation = "none";
-    number.offsetHeight;
+    // number.offsetHeight;
     number.style.animation = null;
     number.style.animation = "block " + speed + "s infinite linear";
   } else {
@@ -119,7 +119,7 @@ let isAlive = setInterval(function () {
 }, 10);
 
 document.body.onkeyup = function (e) {
-  if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+    if (e.key == " " || e.code == "Space" || e.keyCode == 32)  {
     startgame();
   }
 };
@@ -130,6 +130,7 @@ function gameover() {
 
   floor.style.animation = "none";
   number.style.animation = "none";
+  number.style.display = "none";
   cloud.style.animation = "none";
   root.style.animation = "none";
 
