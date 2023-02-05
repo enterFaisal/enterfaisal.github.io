@@ -130,6 +130,7 @@ function gameover() {
 
   floor.style.animation = "none";
   number.style.animation = "none";
+  // number.style.display = "none";
   cloud.style.animation = "none";
   root.style.animation = "none";
 
@@ -148,6 +149,7 @@ function startgame() {
 
   floor.style.animation = "infinitefloors 20s infinite linear";
   cloud.style.animation = " infinitefloors 30s infinite linear";
+
   number.style.animation = "block 10s infinite linear";
 
   root.style.animation = " root 0.8s infinite linear";
