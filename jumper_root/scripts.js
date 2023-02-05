@@ -2,6 +2,8 @@ const root = document.getElementById("root");
 const number = document.getElementById("number");
 const theScore = document.getElementById("score");
 const right = new Audio("sound/right.mp3");
+const wrong = new Audio("sound/wrong.wav");
+
 const PB = document.getElementById("PB");
 
 const button1 = document.getElementById("option1");
@@ -92,10 +94,6 @@ function checkNum(buttonpressed) {
   } else {
     // change the color of the button to red for 0.5 seconds
     buttonpressed.style.backgroundColor = "rgb(205, 10, 10)";
-    //play sound
-
-    let audio = new Audio("sound/wrong.wav");
-    audio.play();
 
     setTimeout(() => {
       buttonpressed.style.backgroundColor = "white";
@@ -125,6 +123,7 @@ document.body.onkeyup = function (e) {
 };
 
 function gameover() {
+  wrong.play();
   over.style.display = "block";
   document.getElementsByClassName("bg")[1].style.display = "block";
 
