@@ -73,8 +73,9 @@ font-family: "VT323", monospace;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 14%;
+  position: flex;
+  top: 18%;
+  margin-top: 5%;
   animation: none;
 
   
@@ -84,7 +85,7 @@ font-family: "VT323", monospace;
 #number {
   font-size: 45px;
   position: absolute;
-  
+  display: block;
   width: 20px;
   height: 20px;
   top: 53%;
@@ -202,4 +203,12 @@ right: 0;
 margin: auto;
 
 }
-
+/* for phones */
+@media ( max-width: 1000px){
+  #options {
+  width: 312px;
+  }
+  #over, #start {
+    font-size: 6rem;
+  }  
+};

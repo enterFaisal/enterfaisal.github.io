@@ -11,8 +11,8 @@
     />
   </head>
   <body>
-    <div class="bg" style="display: block">
-      <div id="start">press space!</div>
+    <div class="bg" onclick="startgame()" style="display: block">
+      <div id="start">start!</div>
     </div>
     <div class="game" id="game">
       <div id="PB">highest score: 0</div>
@@ -47,7 +47,7 @@
         </button>
       </div>
     </div>
-    <div class="bg" style="display: none">
+    <div class="bg" onclick="startgame()" style="display: none">
       <div id="over">GameOver!</div>
     </div>
     <script src="scripts.js"></script>
