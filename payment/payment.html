@@ -36,6 +36,7 @@
             label: "subscribe",
           },
           createSubscription: function (data, actions) {
+            Telegram.WebApp.expand();
             return actions.subscription.create({
               /* Creates the subscription */
               plan_id: "P-9A182791BX901072KMQFQ2SY",
