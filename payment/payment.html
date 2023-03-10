@@ -9,19 +9,22 @@
   </head>
   <body>
     <div id="payment">
-      <div id="paypal-button-container-P-1FH70131JH866711BMQBQ77Y"></div>
+      <div id="paypal-button-container"></div>
     </div>
 
     <script
-      src="https://www.paypal.com/sdk/js?client-id=AdqUYaddV1MU50XIEp4V-QBPmD87llrqa_fdRtavfOMd7Gtf4--haOGEcCbE-tdw2w7Y-qw20Z0cbOqv&vault=true&intent=subscription"
+      src="https://www.paypal.com/sdk/js?client-id=ATmKRMeVmhB9squa27weMutW324SbYZKzD_uCQ_dRlZctyGgMvjCTdDWNBfMuQAf0MvfARWNR65sBJnd&vault=true&intent=subscription"
       data-sdk-integration-source="button-factory"
     ></script>
+
     <script>
       const id = new URLSearchParams(window.location.search).get("id");
       if (id == null) {
         alert("the url is not valid");
+        // redirect to the home page
         window.location.href = "https://t.me/twitterstylebot";
       }
+
       console.log(id);
 
       paypal
@@ -35,14 +38,14 @@
           createSubscription: function (data, actions) {
             return actions.subscription.create({
               /* Creates the subscription */
-              plan_id: "P-1FH70131JH866711BMQBQ77Y",
+              plan_id: "P-9A182791BX901072KMQFQ2SY",
             });
           },
           onApprove: function (data, actions) {
             alert(data.subscriptionID); // You can add optional success message for the subscriber here
           },
         })
-        .render("#paypal-button-container-P-1FH70131JH866711BMQBQ77Y"); // Renders the PayPal button
+        .render("#paypal-button-container"); // Renders the PayPal button
     </script>
   </body>
   <style>
@@ -53,7 +56,7 @@
       align-items: center;
       height: 100vh;
     }
-    #paypal-button-container-P-1FH70131JH866711BMQBQ77Y {
+    #paypal-button-container {
       width: 100%;
       max-width: 600px;
     }
