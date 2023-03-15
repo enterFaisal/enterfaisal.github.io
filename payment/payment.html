@@ -8,6 +8,20 @@
     <title>payment</title>
   </head>
   <body>
+    <style>
+      /*  center vertically */
+      #payment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #paypal-button-container {
+        width: 100%;
+        max-width: 600px;
+      }
+    </style>
+
     <div id="payment">
       <div id="paypal-button-container"></div>
     </div>
@@ -20,6 +34,7 @@
     <script>
       const id = new URLSearchParams(window.location.search).get("id");
 
+      reference_id;
       if (id == null) {
         alert("the url is not valid");
         // redirect to the home page
@@ -56,6 +71,7 @@
               purchase_units: [
                 {
                   custom_id: id,
+                  reference_id: id,
                 },
               ],
             });
@@ -70,17 +86,4 @@
         .render("#paypal-button-container"); // Renders the PayPal button
     </script>
   </body>
-  <style>
-    /*  center vertically */
-    #payment {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #paypal-button-container {
-      width: 100%;
-      max-width: 600px;
-    }
-  </style>
 </html>
