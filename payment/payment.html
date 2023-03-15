@@ -52,11 +52,18 @@
             return actions.subscription.create({
               /* Creates the subscription */
               plan_id: "P-9A182791BX901072KMQFQ2SY",
+
+              purchase_units: [
+                {
+                  custom_id: id,
+                },
+              ],
             });
           },
           onApprove: function (data, actions) {
             alert("payment approved");
-            // close the payment page
+            // send to bot the subscriptionID by useing inline query
+            subscriptionID = data.subscriptionID;
             Telegram.WebApp.close();
           },
         })
