@@ -19,19 +19,31 @@
 
     <script>
       const id = new URLSearchParams(window.location.search).get("id");
+
       if (id == null) {
         alert("the url is not valid");
         // redirect to the home page
         window.location.href = "https://t.me/twitterstylebot";
       }
 
-      console.log(id);
+      // check if devise is dark or light
+      const isDark = Telegram.WebApp.colorScheme === "dark";
+      var Bcolor = "gold";
+      if (isDark) {
+        document.body.style.backgroundColor = "#1e1e1e";
+        var Bcolor = "white";
+      }
+
+      function send() {
+        // sendData to the bot
+        Telegram.WebApp.sendData("close");
+      }
 
       paypal
         .Buttons({
           style: {
             shape: "rect",
-            color: "gold",
+            color: Bcolor,
             layout: "vertical",
             label: "subscribe",
           },
@@ -43,7 +55,9 @@
             });
           },
           onApprove: function (data, actions) {
-            alert(data.subscriptionID); // You can add optional success message for the subscriber here
+            alert("payment approved");
+            // close the payment page
+            Telegram.WebApp.close();
           },
         })
         .render("#paypal-button-container"); // Renders the PayPal button
