@@ -162,12 +162,13 @@
         console.log(color2Value);
 
         // telegram send data
-        Telegram.WebApp.sendData("hi");
-
-        // {
-        //   BGcolor: color1Value,
-        //   Fcolor: color2Value,
-        // }
+        // send the data as a string
+        Telegram.WebApp.sendData(
+          JSON.stringify({
+            color1: color1Value,
+            color2: color2Value,
+          })
+        );
       });
     </script>
   </body>
