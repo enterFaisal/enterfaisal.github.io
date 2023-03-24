@@ -155,16 +155,28 @@
 
       // add event listener
       button.addEventListener("click", () => {
-        // get the value of the 2 colors
-        const color1Value = color1.value;
-        const color2Value = color2.value;
-        console.log(color1Value);
-        console.log(color2Value);
+        // change the value from hex to rgb
+        const color1Value = hexToRgb(color1.value);
+        const color2Value = hexToRgb(color2.value);
+        console.log(color1Value + "#" + color2Value);
 
         // telegram send data
         // send the data as a string as "color1#color2"
         Telegram.WebApp.sendData(color1Value + "#" + color2Value);
       });
+
+      // function to convert hex to rgb
+      function hexToRgb(hex) {
+        // remove the # from the hex
+        hex = hex.replace("#", "");
+        // split the hex into 3 parts
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+
+        // return the rgb
+        return "(" + r + "," + g + "," + b + ")";
+      }
     </script>
   </body>
 </html>
