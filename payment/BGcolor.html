@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <style>
+    html,
+    body {
+      margin: 0%;
+
+      background: whitesmoke;
+    }
+
+    html {
+      font: 1vh Helvetica-Neue, Helvetica, sans-serif;
+    }
+
+    #swatchs {
+      align-items: center;
+      background: whitesmoke;
+      display: flex;
+      justify-content: center;
+    }
+
+    #swatch {
+      background: white;
+      box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      height: 20em;
+      margin: 5em 1em;
+      width: 40%;
+    }
+
+    #swatch .info {
+      padding: 1em;
+    }
+
+    #swatch h1 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    #swatch h2 {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    input[type="color"] {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      height: 100%;
+      padding: 0;
+      width: 100%;
+    }
+    #submit {
+      /* center div */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #submit button {
+      background: #1e1e1e;
+      border: 0;
+      border-radius: 0;
+      color: white;
+      cursor: pointer;
+      font-size: 2em;
+      font-weight: bold;
+      padding: 1em;
+      text-transform: uppercase;
+      width: 80%;
+      /* make it round */
+      /* border-radius: 5px; */
+    }
+
+    *:focus {
+      border-radius: 0;
+      outline: none;
+    }
+
+    ::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    ::-webkit-color-swatch {
+      border: 0;
+      border-radius: 0;
+    }
+
+    ::-moz-color-swatch,
+    ::-moz-focus-inner {
+      border: 0;
+    }
+
+    ::-moz-focus-inner {
+      padding: 0;
+    }
+  </style>
+  <body>
+    <!-- input color -->
+    <div id="swatchs">
+      <div id="swatch" class="swatchs">
+        <input type="color" id="color1" name="color" value="#0084b4" />
+        <div class="info">
+          <h1>Background</h1>
+        </div>
+      </div>
+      <div id="swatch" class="swatchs">
+        <input type="color" id="color2" name="color" value="#F0F0F0" />
+        <div class="info">
+          <h1>Font</h1>
+        </div>
+      </div>
+    </div>
+    <!-- submit button -->
+    <dev id="submit">
+      <button type="submit">Submit</button>
+    </dev>
+    <script>
+      // get the button
+      const button = document.querySelector("button");
+      // get the 2 color inputs id = color
+      const color1 = document.getElementById("color1");
+      const color2 = document.getElementById("color2");
+
+      // const isDark = Telegram.webApp.isDarkMode();
+      const isDark = false;
+
+      if (isDark) {
+        // dark mode
+        // document.body.style.background = "#1e1e1e";
+        document.body.style.color = "white";
+        button.style.background = "#e5e5e5";
+        // change the body background color
+        document.body.style.background = "#1e1e1e";
+        document.getElementById("swatchs").style.background = "#1e1e1e";
+        document.getElementsByClassName("swatchs")[0].style.background =
+          "#1e1e1e";
+        document.getElementsByClassName("swatchs")[1].style.background =
+          "#1e1e1e";
+        document.getElementById("submit").style.background = "#1e1e1e";
+      }
+
+      // add event listener
+      button.addEventListener("click", () => {
+        // get the value of the 2 colors
+        const color1Value = color1.value;
+        const color2Value = color2.value;
+        console.log(color1Value);
+        console.log(color2Value);
+
+        // telegram send data
+        Telegram.webApp.sendData({
+          BGcolor: color1Value,
+          Fcolor: color2Value,
+        });
+      });
+    </script>
+  </body>
+</html>
 
