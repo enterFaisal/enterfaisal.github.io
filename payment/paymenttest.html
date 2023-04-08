@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>payment</title>
+    <style>
+      /*  center vertically */
+      #payment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #paypal-button-container {
+        width: 100%;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="payment">
+      <div id="paypal-button-container"></div>
+    </div>
+
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=ATYHtN9thOeqCwO81wOmuyCHEi7GxAfM7SiOi77MK9-hq3kQMB5QVmcHxsXV725XJ5o3GFuuOIF15EUW&vault=true&intent=subscription"
+      data-sdk-integration-source="button-factory"
+    ></script>
+
+    <script>
+      const id = new URLSearchParams(window.location.search).get("id");
+      const mid = new URLSearchParams(window.location.search).get("mid");
+      const pack = new URLSearchParams(window.location.search).get("pack");
+      const subs = ["video_pack", "customization_pack"];
+      const subids = [
+        "P-50J966505T3525057MQMJCUY",
+        "P-03B187172T593751XMQMWR3I",
+      ];
+
+      const subid = subids[subs.indexOf(pack)];
+
+      console.log(id, pack, subid);
+
+      // useing telegram get platform
+      const platform = Telegram.WebApp.platform;
+
+      if (id == null || pack == null) {
+        alert("the url is not valid");
+        // redirect to the home page
+        window.location.href = "https://t.me/twitterstylebot";
+      }
+
+      // check if devise is dark or light
+      const isDark = Telegram.WebApp.colorScheme === "dark";
+      var Bcolor = "gold";
+      if (isDark) {
+        document.body.style.backgroundColor = "#1e1e1e";
+        var Bcolor = "white";
+      }
+      // check if the user already have a subscription
+      // get request to the bot send the id and the platform
+      const r = fetch("server ip/check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userid: id,
+          platform: platform,
+          mid: mid,
+        }),
+      });
+
+      r.then((res) => {
+        if (res.status != 200) {
+          alert("something went wrong");
+          // redirect to the home page
+          window.location.href = "https://t.me/twitterstylebot";
+        } else if (res.status == 200) {
+          // get the text
+          res.text().then((text) => {
+            if (text == "true") {
+              alert("you already have a subscription");
+              // redirect to the home page
+              window.location.href = "https://t.me/twitterstylebot";
+            }
+          });
+        }
+      });
+
+      paypal
+        .Buttons({
+          style: {
+            shape: "rect",
+            color: Bcolor,
+            layout: "vertical",
+            label: "subscribe",
+          },
+          createSubscription: function (data, actions) {
+            Telegram.WebApp.expand();
+            return actions.subscription.create({
+              /* Creates the subscription */
+              plan_id: subid,
+              custom_id: id,
+            });
+          },
+          onApprove: function (data, actions) {
+            // send to bot the subscriptionID by useing inline query
+            // subscriptionID = data.subscriptionID;
+            Telegram.WebApp.close();
+          },
+        })
+        .render("#paypal-button-container"); // Renders the PayPal button
+    </script>
+  </body>
+</html>
